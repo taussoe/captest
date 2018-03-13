@@ -1,0 +1,90 @@
+backend:
+  name: git-gateway
+  branch: master
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: "kontaktpersoner"
+    label: "Kontakt personer"
+    description: >
+      Vedligeholdelse af kontaktpersoner
+    folder: "src/pages/kontaktpersoner"
+    create: true
+    fields:
+      - {label: "Path", name: "path", widget: "hidden", default: "/kontaktpersoner"}
+      - {label: "Profilbillede", name: "contactimage", widget: image}
+      - {label: "Navn", name: "title", widget: "string"}
+      - {label: "Titel", name: "contacttitle", widget: "string"}
+      - {label: "Uddannelse", name: "contacteducation", widget: "string", required: false}
+      - {label: "Telefon", name: "contacttelephone", widget: "string"}
+      - {label: "Email", name: "contactemail", widget: "string"}
+  - name: "pages"
+    label: "Pages"
+    editor:
+      preview: false
+    files:
+      - file: "src/pages/home/home.md"
+        label: "Home"
+        name: "home"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "product-page"}
+          - {label: "Path", name: "path", widget: "hidden", default: "/"}
+          - {label: "SEO Title", name: title, widget: string}
+          - {label: "SEO Image", name: image, widget: image}
+          - {label: "SEO Description", name: description, widget: string}
+          - {label: Komponenter, name: components, widget: object, fields: [{label: Sektioner, name: sektioner, widget: list, fields: [{label: "Menu navn", name: menuname, widget: string}, {label: "Component", name: "component", widget: "select", options: ["Hero", "Statement", "PictureLeft", "PictureRight", "Instagram", "Kontakt", "Parallax"]},{label: Image, name: image, widget: image}, {label: "Overskrift", name: overskrift, widget: string}, {label: Text, name: text, widget: "markdown"}]}]}
+      - file: "src/pages/showroom/showroom.md"
+        label: "Showroom"
+        name: "showroom"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "showroom-page"}
+          - {label: "Path", name: "path", widget: "hidden", default: "/showroom"}
+          - {label: "Image", name: image, widget: image}
+          - {label: "Overskrift", name: "title", widget: "string"}
+          - {label: "Tekst", name: "text", widget: "markdown"}
+  - name: "carmodels"
+    label: "Bil mærker"
+    description: >
+      Vedligeholdelse af bilmærker
+    folder: "src/pages/carmodels"
+    create: true
+    fields:
+      - {label: "Path", name: "path", widget: "hidden", default: "/carmodels"}
+      - {label: "Billede", name: "carimage", widget: image}
+      - {label: "Mærke", name: "title", widget: "string"}
+      - {label: "Tekst", name: "text", widget: "markdown"}
+  - name: "cars"
+    label: "Biler"
+    description: >
+      Vedligeholdelse af biler
+    folder: "src/pages/cars"
+    create: true
+    fields:
+      - {label: "Path", name: "path", widget: "hidden", default: "/cars"}
+      - {label: "Bilmærke", name: "carmodel", widget: "relation", collection: "carmodels", searchFields:[title], valueField: "title"}
+      - {label: "Bil", name: "title", widget: "string"}
+      - {label: "Tekst", name: "body", widget: "markdown"}
+      - {label: Billeder, name: pictures, widget: object, fields: [{label: Billeder, name: picturelist, widget: list, fields: [{label: Image, name: image, widget: image}]}]}
+      - {label: "Årgang", name: "year", widget: "string"}
+      - {label: "Mdl. ydelse", name: "monthlycost", widget: "string"}
+      - {label: "Førstegangs ydelse", name: "firstcost", widget: "string"}
+      - {label: "Restværdi", name: "value", widget: "string"}
+      - {label: "Volumen", name: "volume", widget: "string"}
+      - {label: "Cylindre", name: "cylindre", widget: "string"}
+      - {label: "Antal ventiler", name: "ventiler", widget: "string"}
+      - {label: "Gear", name: "gear", widget: "string"}
+      - {label: "Træk", name: "traek", widget: "string"}
+      - {label: "Type", name: "type", widget: "string"}
+      - {label: "Første reg.", name: "foerstereg", widget: "string"}
+      - {label: "Kilometer", name: "kilometer", widget: "string"}
+      - {label: "Brændstof", name: "braendstof", widget: "string"}
+      - {label: "Farve", name: "farve", widget: "string"}
+      - {label: "Døre", name: "doere", widget: "string"}
+      - {label: "Effekt", name: "effekt", widget: "string"}
+      - {label: "Moment", name: "moment", widget: "string"}
+      - {label: "Topfart", name: "topfart", widget: "string"}
+      - {label: "0-100", name: "nultilhundrede", widget: "string"}
+
+
